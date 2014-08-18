@@ -18,7 +18,7 @@ public class PlayerMobility : MonoBehaviour {
 
 		if (Input.GetKey (KeyCode.W)) {
 			var dif = (mousePosition - transform.position);
-			if (Math.Abs(dif.x) > 3 || Math.Abs(dif.y) > 3){
+			if (Math.Abs(dif.x) > 0.1f || Math.Abs(dif.y) > 0.1f){
 				rigidbody2D.AddForce (gameObject.transform.up * speed);
 			}
 		}	
