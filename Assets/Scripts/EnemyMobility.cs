@@ -12,11 +12,4 @@ public class EnemyMobility : MonoBehaviour {
 		transform.eulerAngles = new Vector3 (0, 0, z);
 		rigidbody2D.AddForce (gameObject.transform.up * speed);
 	}
-
-	void OnCollisionEnter2D(Collision2D col) 
-	{
-		if (col.gameObject == player) {
-			Debug.Log("asd");	
-		}
-	}
 }
