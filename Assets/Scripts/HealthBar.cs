@@ -17,7 +17,7 @@ public class HealthBar : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter2D(Collision2D col) {
-		if (col.gameObject.name == zombie.name) {
+		if (col.gameObject.name.Contains(zombie.name)) {
 			barDisplay -= 0.2f;
 		}
 	}
