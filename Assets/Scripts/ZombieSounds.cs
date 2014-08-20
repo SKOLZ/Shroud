@@ -13,7 +13,7 @@ public class ZombieSounds : RandomSounds {
 	}
 
 	bool closeToPlayer() {
-		var dif = (transform.position - player.transform.position );
+		Vector3 dif = (transform.position - player.transform.position );
 		return (Math.Abs(dif.x) < soundRadius && Math.Abs(dif.y) < soundRadius);
 	}
 }
