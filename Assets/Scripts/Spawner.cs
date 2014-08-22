@@ -1,12 +1,11 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Spawner : MonoBehaviour
 {
-	public GameObject spawn;
+	public List<GameObject> spawns;
+	public float spawnRate;
 
-	protected GameObject Spawn() {
-		return (GameObject)Instantiate(spawn, transform.position, transform.rotation);
-	}
 }
 

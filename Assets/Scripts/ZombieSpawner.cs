@@ -3,17 +3,18 @@ using System.Collections;
 
 public class ZombieSpawner : Spawner {	
 
-	public GameObject zombieTarget;
-	public float spawnRate = 5.0f;
+	public GameObject zombie;
 
 	void Start() {
 		InvokeRepeating("ZombieSpawn", 0, spawnRate);
 	}
 
 	void ZombieSpawn() {
-		GameObject zombie = Spawn ();
-		zombie.GetComponent<EnemyMobility> ().player = zombieTarget;
-		zombie.GetComponent<ZombieSounds> ().player = zombieTarget;
+		int i;
+		for (i=0; i<spawns.Count; i++) {
+			GameObject zombie2 = Instantiate (zombie, spawns[i].transform.position, spawns[i].transform.rotation) as GameObject;
+			zombie2.SetActive(true);
+		}
 	}
 }
 

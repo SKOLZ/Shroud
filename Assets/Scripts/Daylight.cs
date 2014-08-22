@@ -13,7 +13,7 @@ public class Daylight : MonoBehaviour {
 	void FixedUpdate () {
 		if (state.Equals ("dusk")) {
 				daylight.intensity -= (daySpeed * Time.fixedDeltaTime);
-				if (daylight.intensity <= 0.0f)
+				if (daylight.intensity <= 0.008f)
 						state = "night";
 		} else if (state.Equals("night")) {
 			nightTime -= (daySpeed * Time.fixedDeltaTime);
