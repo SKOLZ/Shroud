@@ -6,19 +6,19 @@ public class ClockManager : MonoBehaviour {
 	public GUIText clock;
 	private int hour = 18;
 	private int minutes = 7;
-	private int currentTime;
+	private float currentTime;
 
 	void onStart() {
-		currentTime = Mathf.FloorToInt (Time.time);
+		currentTime = Time.time;
 		alterClock ();
 	}
 
 	void FixedUpdate () {
-		int newTime = Mathf.FloorToInt (Time.time);
-		if (newTime > currentTime) {
+		float newTime = Time.time;
+		if (newTime - currentTime > 0.2f) {
 			alterClock ();
+			currentTime = newTime;
 		}
-		currentTime = newTime;
 	}
 
 	void alterClock() {
@@ -34,6 +34,12 @@ public class ClockManager : MonoBehaviour {
 		generateClockText ();
 	}
 
+	public int getHour() {
+				return hour;
+		}
+	public int getMinutes() {
+				return minutes;
+		}
 	void generateClockText(){
 		string hh;
 		string mm;

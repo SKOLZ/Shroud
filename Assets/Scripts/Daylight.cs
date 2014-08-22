@@ -4,25 +4,21 @@ using System.Collections;
 public class Daylight : MonoBehaviour {
 
 	public Light daylight;
-	public string state = "dusk";
+	public ClockManager cm;
 	public float baseIntensity = 0.4f;
 	public float dayIntensity = 0.6f;
 	public float daySpeed = 0.01f;
 	public float nightTime = 5.0f;
+	public float darknessIntencity = 0.008f;
 
 	void FixedUpdate () {
-		if (state.Equals ("dusk")) {
+		if (cm.getHour() > 17 && cm.getHour() < 21 ) {
+			if(daylight.intensity > 0.008f) {
 				daylight.intensity -= (daySpeed * Time.fixedDeltaTime);
-				if (daylight.intensity <= 0.008f)
-						state = "night";
-		} else if (state.Equals("night")) {
-			nightTime -= (daySpeed * Time.fixedDeltaTime);
-			if (nightTime <= 0.0f)
-				state = "dawn";
-		} else if(state.Equals("dawn")) {
+			}
+		} else if (cm.getHour() > 5 && cm.getHour() < 17) {
 			daylight.intensity += (daySpeed * Time.fixedDeltaTime);
-			if(daylight.intensity > dayIntensity)
-				state = "day";
+			nightTime -= (daySpeed * Time.fixedDeltaTime);
 		}
 	}
 }
