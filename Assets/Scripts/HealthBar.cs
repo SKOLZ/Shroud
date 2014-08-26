@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class HealthBar : MonoBehaviour {
+public class HealthBar : RandomSounds {
 	public float barDisplay = 1.0f;
 	public Vector2 pos = new Vector2(550,10);
 	public Vector2 size = new Vector2(60,20);
@@ -22,6 +22,8 @@ public class HealthBar : MonoBehaviour {
 			barDisplay -= 0.2f;
 			if(barDisplay <= 0.0f) {
 				gameOverPopup.SetActive(true);
+			} else  {
+				playSound();
 			}
 		}
 	}
