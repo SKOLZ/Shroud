@@ -8,6 +8,7 @@ public class HealthBar : MonoBehaviour {
 	public Texture2D emptyTex;
 	public Texture2D fullTex;
 	public GameObject zombie;
+	public GameObject gameOverPopup;
 	
 	void OnGUI() {
 		GUI.BeginGroup(new Rect(pos.x, pos.y, size.x, size.y));
@@ -19,6 +20,9 @@ public class HealthBar : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col) {
 		if (col.gameObject.name.Contains(zombie.name)) {
 			barDisplay -= 0.2f;
+			if(barDisplay <= 0.0f) {
+				gameOverPopup.SetActive(true);
+			}
 		}
 	}
 }
