@@ -5,7 +5,7 @@ public class MainMenu : MonoBehaviour {
 
 	private Rect play = new Rect(220, 250, 100, 40);
 	private Rect about = new Rect(220, 320, 100, 40);
-	private Rect instructions = new Rect(220, 390, 100, 40);
+	private Rect instructions = new Rect(220, 390, 150, 40);
 	private Rect exit = new Rect(220, 460, 100, 40);
 
 	public GUIStyle playStyle;
