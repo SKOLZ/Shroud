@@ -10,6 +10,10 @@ public class Flashlight : MonoBehaviour {
 	public AudioClip batteryWarning;
 	private bool warned = false;
 
+	void Start() {
+		flashlight.enabled = false;
+	}
+
 	void Update () {
 		if (flashlight.enabled) {
 			flashlight.intensity = 2 * (batteryLife / 100);
