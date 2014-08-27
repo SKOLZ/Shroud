@@ -8,8 +8,8 @@ public class CameraFollow : MonoBehaviour {
 	public Transform target;
 	public GameObject gameOverPopup;
 	
-	private float vertExtent;
-	private float horzExtent;
+	private float vertExtent = 0.0f;
+	private float horzExtent = 0.0f;
 
 	public float mapEastLimit;
 	public float mapWestLimit;
@@ -17,8 +17,6 @@ public class CameraFollow : MonoBehaviour {
 	public float mapSouthLimit;
 	
 	void Start() {
-		var vertExtent = Camera.main.camera.orthographicSize;   
-		var horzExtent = vertExtent * Screen.width / Screen.height;
 	}
 
 	void Update () {

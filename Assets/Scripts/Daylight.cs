@@ -9,11 +9,11 @@ public class Daylight : MonoBehaviour {
 	public float dayIntensity = 0.6f;
 	public float daySpeed = 0.01f;
 	public float nightTime = 5.0f;
-	public float darknessIntencity = 0.008f;
+	public float darknessIntensity = 0.008f;
 
 	void FixedUpdate () {
 		if (cm.getHour() > 17 && cm.getHour() < 21 ) {
-			if(daylight.intensity > 0.008f) {
+			if(daylight.intensity > darknessIntensity && daylight.intensity < dayIntensity ) {
 				daylight.intensity -= (daySpeed * Time.fixedDeltaTime);
 			}
 		} else if (cm.getHour() > 5 && cm.getHour() < 17) {
