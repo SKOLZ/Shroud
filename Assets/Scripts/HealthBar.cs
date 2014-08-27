@@ -9,12 +9,29 @@ public class HealthBar : RandomSounds {
 	public Texture2D fullTex;
 	public GameObject zombie;
 	public GameObject gameOverPopup;
-	
+	public Vector3 playerPos;
+	public float idleTime;
+	public float maxIdleTime = 5.0f;
+
 	void OnGUI() {
 		GUI.BeginGroup(new Rect(pos.x, pos.y, size.x, size.y));
 		GUI.Box(new Rect(0,0, size.x, size.y), emptyTex);
 		GUI.DrawTexture(new Rect(0,0, size.x * barDisplay, size.y), fullTex);
 		GUI.EndGroup();
+	}
+
+	void FixedUpdate() {
+		if (transform.localPosition.Equals(playerPos)) {
+			idleTime += Time.fixedDeltaTime;
+			if(idleTime > maxIdleTime)
+				barDisplay -= 0.001f;
+			if(barDisplay <= 0.0f) {
+				gameOverPopup.SetActive(true);
+			}
+		} else {
+			playerPos = transform.localPosition;
+			idleTime = 0.0f;
+		}
 	}
 	
 	void OnCollisionEnter2D(Collision2D col) {
