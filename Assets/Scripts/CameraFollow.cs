@@ -8,7 +8,27 @@ public class CameraFollow : MonoBehaviour {
 	public Transform target;
 	public GameObject gameOverPopup;
 	
-	// Update is called once per frame
+	private float minX;
+	private float maxX;
+	private float minY;
+	private float maxY;
+	private float mapX = 100.0f;
+	private float mapY = 100.0f;
+	
+	void Start() {
+		var vertExtent = Camera.main.camera.orthographicSize;   
+		var horzExtent = vertExtent * Screen.width / Screen.height;
+		minX = horzExtent - mapX / 2.0f;
+		maxX = mapX / 2.0f - horzExtent;
+		minY = vertExtent - mapY / 2.0f;
+		maxY = mapY / 2.0f - vertExtent;
+		Debug.Log(minX);
+		Debug.Log(maxX);
+		Debug.Log(minY);
+		Debug.Log(maxY);
+		Debug.Log(camera.WorldToViewportPoint(target.position));
+	}
+
 	void Update () {
 		if(!gameOverPopup.activeSelf) {
 			Vector3 point = camera.WorldToViewportPoint(target.position);
