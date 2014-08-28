@@ -8,6 +8,7 @@ public class Flashlight : MonoBehaviour {
 	public float batteryConsumption = 1.0f;
 	public GameObject battery;
 	public AudioClip batteryWarning;
+	public AudioClip flashlightSwitch;
 	private bool warned = false;
 
 	void Start() {
@@ -31,6 +32,10 @@ public class Flashlight : MonoBehaviour {
 		}
 
 		if (Input.GetMouseButtonDown (0) && batteryLife > 0) {
+			if(!audio.isPlaying) {
+				audio.clip = flashlightSwitch;
+				audio.Play();
+			}
 			flashlight.enabled = !flashlight.enabled;
 		}
 	}

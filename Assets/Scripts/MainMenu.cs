@@ -14,15 +14,24 @@ public class MainMenu : MonoBehaviour {
 	public GUIStyle instructionsStyle;
 	public GUITexture aboutText;
 	public GUITexture instructionsText;
+	public AudioClip jumpScare;
+	private bool jumpPlaying;
 
 	void Start() {
 		aboutText.enabled = false;
 		instructionsText.enabled = false;
+		jumpPlaying = false;
 	}
 
 	void OnGUI() {
 		if(GUI.Button(play, "", playStyle)) {
-			Application.LoadLevel(1);
+			audio.Stop();
+			audio.loop = false;
+			Debug.Log(audio.isPlaying);
+			audio.clip = jumpScare;
+			audio.Play();
+			jumpPlaying = true;
+			Debug.Log("click");
 		} 
 		if(GUI.Button(about, "", aboutStyle)) {
 			aboutText.enabled = !aboutText.enabled;
@@ -34,6 +43,14 @@ public class MainMenu : MonoBehaviour {
 		} 
 		if(GUI.Button(exit, "", exitStyle)) {
 			Application.Quit();
+		}
+	}
+
+	void Update() {
+		Debug.Log(audio.isPlaying);
+		if(jumpPlaying && !audio.isPlaying){
+			Debug.Log("load");
+			Application.LoadLevel(1);
 		}
 	}
 }
