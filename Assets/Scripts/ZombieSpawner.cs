@@ -10,10 +10,13 @@ public class ZombieSpawner : Spawner {
 	}
 
 	void ZombieSpawn() {
-		int i;
-		for (i=0; i<spawns.Count; i++) {
-			GameObject zombie2 = Instantiate (zombie, spawns[i].transform.position, spawns[i].transform.rotation) as GameObject;
-			zombie2.SetActive(true);
+		if(spawnAmount > spawns.Count) {
+			spawnAmount = 4;
+		}
+		for(int i=0 ; i<spawnAmount ; i++ ) {
+			int randomNumber = Mathf.FloorToInt(Random.Range(0, spawns.Count));
+			GameObject babyZombie = Instantiate (zombie, spawns[i].transform.position, spawns[i].transform.rotation) as GameObject;
+			babyZombie.SetActive(true);
 		}
 	}
 }

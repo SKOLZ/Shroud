@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
 {
 	public List<GameObject> spawns;
 	public float spawnRate;
+	public int spawnAmount;
 
 }
 
