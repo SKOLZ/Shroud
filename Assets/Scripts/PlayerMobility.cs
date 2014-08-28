@@ -5,6 +5,9 @@ using System;
 public class PlayerMobility : MonoBehaviour {
 
 	public float speed;
+	private Animator animCtrl;
+	private bool die;
+	private bool walk; 
 
 	void FixedUpdate() {
 		var mousePosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
