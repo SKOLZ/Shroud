@@ -11,7 +11,7 @@ public class GameOver : MonoBehaviour {
 
 	void OnGUI(){
 		if(GUI.Button(retry, "", retryButton)){
-			Application.LoadLevel(0);
+			Application.LoadLevel(1);
 		}
 		if(GUI.Button(quit,"", exitButton)){
 			Application.Quit();
