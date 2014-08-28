@@ -27,11 +27,9 @@ public class MainMenu : MonoBehaviour {
 		if(GUI.Button(play, "", playStyle)) {
 			audio.Stop();
 			audio.loop = false;
-			Debug.Log(audio.isPlaying);
 			audio.clip = jumpScare;
 			audio.Play();
 			jumpPlaying = true;
-			Debug.Log("click");
 		} 
 		if(GUI.Button(about, "", aboutStyle)) {
 			aboutText.enabled = !aboutText.enabled;
@@ -49,7 +47,6 @@ public class MainMenu : MonoBehaviour {
 	void Update() {
 		Debug.Log(audio.isPlaying);
 		if(jumpPlaying && !audio.isPlaying){
-			Debug.Log("load");
 			Application.LoadLevel(1);
 		}
 	}
