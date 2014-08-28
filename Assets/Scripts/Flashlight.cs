@@ -10,15 +10,12 @@ public class Flashlight : MonoBehaviour {
 	public AudioClip batteryWarning;
 	private bool warned = false;
 
-	// Update is called once per frame
 	void Update () {
 		if (flashlight.enabled) {
 			flashlight.intensity = 2 * (batteryLife / 100);
 			batteryLife -= (batteryConsumption * Time.deltaTime);
 		}
-		Debug.Log (batteryLife);
 		if (!warned && batteryLife <= 50.0f) {
-			Debug.Log ("ola");
 			warned = true;
 			audio.clip = batteryWarning;
 			audio.Play();

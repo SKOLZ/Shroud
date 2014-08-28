@@ -9,8 +9,8 @@ public class FinisherManager : MonoBehaviour {
 	
 	}
 	
-	void OnCollitionEnter2D (Collider2D col) {
-		if(cm.getHour() > 8) {
+	void OnCollisionEnter2D (Collision2D col) {
+		if(cm.getHour() > 8 && cm.getHour() < 17) {
 			Application.LoadLevel(3);
 		} else {
 			//play audio 
