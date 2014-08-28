@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour {
 
 	void Start() {
 		aboutText.enabled = false;
-		aboutText.text = "Developers: \n\tGabriel Zanzotti\n\tIñaki Lanusse\n\nInstructions:\n\tWASD to move towards mouse pointer. \n Survive the night.";
+		aboutText.text = "Developers: \n\tGabriel Zanzotti\n\tIñaki Lanusse\n\nInstructions:\n\tWASD to move towards mouse pointer. \n Click to toggle flashlight.\n Survive the night.";
 	}
 
 	void OnGUI() {
