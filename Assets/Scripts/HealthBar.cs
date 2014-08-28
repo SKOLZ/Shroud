@@ -12,6 +12,12 @@ public class HealthBar : RandomSounds {
 	public Vector3 playerPos;
 	public float idleTime;
 	public float maxIdleTime = 5.0f;
+	private Animator animCtrl;
+	public GameObject corpse;
+
+	void Start() {
+		animCtrl = GetComponent<Animator>();
+	}
 
 	void OnGUI() {
 		GUI.BeginGroup(new Rect(pos.x, pos.y, size.x, size.y));
@@ -21,16 +27,20 @@ public class HealthBar : RandomSounds {
 	}
 
 	void FixedUpdate() {
-		if (transform.localPosition.Equals(playerPos)) {
-			idleTime += Time.fixedDeltaTime;
-			if(idleTime > maxIdleTime)
-				barDisplay -= 0.001f;
-			if(barDisplay <= 0.0f) {
-				gameOverPopup.SetActive(true);
+		if(gameObject != null) {    
+			if (transform.localPosition.Equals(playerPos)) {
+				idleTime += Time.fixedDeltaTime;
+				if(idleTime > maxIdleTime)
+					barDisplay -= 0.001f;
+				if(barDisplay <= 0.0f) {
+					Instantiate(corpse, gameObject.transform.position, gameObject.transform.rotation);
+					Destroy(gameObject);
+					gameOverPopup.SetActive(true);
+				}
+			} else {
+				playerPos = transform.localPosition;
+				idleTime = 0.0f;
 			}
-		} else {
-			playerPos = transform.localPosition;
-			idleTime = 0.0f;
 		}
 	}
 	
@@ -38,6 +48,8 @@ public class HealthBar : RandomSounds {
 		if (col.gameObject.name.Contains(zombie.name)) {
 			barDisplay -= 0.2f;
 			if(barDisplay <= 0.0f) {
+				Instantiate(corpse, gameObject.transform.position, gameObject.transform.rotation);
+				Destroy(gameObject);
 				gameOverPopup.SetActive(true);
 			} else  {
 				playSound();

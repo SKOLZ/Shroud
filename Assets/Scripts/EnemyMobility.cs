@@ -10,11 +10,13 @@ public class EnemyMobility : MonoBehaviour {
 	public float maxRandTime = 3.0f;
 
 	void FixedUpdate() {
-		Vector3 dif = (transform.position - player.transform.position );
-		if ((Math.Abs (dif.x) < detectRadius && Math.Abs (dif.y) < detectRadius)) {
-			HuntPlayer(dif);
-		} else {
-			RandomMove();
+		if (player != null){    
+			Vector3 dif = (transform.position - player.transform.position );
+			if ((Math.Abs (dif.x) < detectRadius && Math.Abs (dif.y) < detectRadius)) {
+				HuntPlayer(dif);
+			} else {
+				RandomMove();
+			}
 		}
 	}
 

@@ -26,9 +26,11 @@ public class MainMenu : MonoBehaviour {
 		} 
 		if(GUI.Button(about, "", aboutStyle)) {
 			aboutText.enabled = !aboutText.enabled;
+			instructionsText.enabled = false;
 		}
 		if(GUI.Button(instructions, "", instructionsStyle)) {
 			instructionsText.enabled = !instructionsText.enabled;
+			aboutText.enabled = false;
 		} 
 		if(GUI.Button(exit, "", exitStyle)) {
 			Application.Quit();

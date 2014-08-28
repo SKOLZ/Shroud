@@ -19,7 +19,7 @@ public class Credits : MonoBehaviour
 	private void Update()
 	{
 		this.offset -= Time.deltaTime * this.speed;
-		if(this.offset <= -710) {
+		if(this.offset <= -720) {
 			Application.LoadLevel(0);
 		}
 	}
@@ -52,7 +52,7 @@ Iñaki Lanusse
 Gabriel Zanzotti
 
 MUSIC BY
-Mad World - Mad World
+Mad World - Gary Jules
 
 
 In loving memory of Iñaki Lanusse & Gabriel Zanzotti who died to make this real

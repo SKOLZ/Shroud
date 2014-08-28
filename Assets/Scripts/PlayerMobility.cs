@@ -6,8 +6,14 @@ public class PlayerMobility : MonoBehaviour {
 
 	public float speed;
 	private Animator animCtrl;
-	private bool die;
-	private bool walk; 
+	private bool dead;
+	private bool walk;  
+
+	void Start() {
+		animCtrl = GetComponent<Animator>();
+		walk = false;
+		dead = false;
+	}
 
 	void FixedUpdate() {
 		var mousePosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
@@ -24,17 +30,23 @@ public class PlayerMobility : MonoBehaviour {
 			if (Math.Abs(dif.x) > 0.1f || Math.Abs(dif.y) > 0.1f){
 				rigidbody2D.AddForce (gameObject.transform.up * speed);
 			}
-		}	
-		if(Input.GetKey(KeyCode.A)) {
+			walk = true;
+			animCtrl.SetBool ("walk", true);
+		} else if(Input.GetKey(KeyCode.A)) {
 			rigidbody2D.AddForce(-gameObject.transform.right * speed);
-		}
-		
-		if(Input.GetKey(KeyCode.S)) {
+			walk = true;
+			animCtrl.SetBool ("walk", true);
+		} else if(Input.GetKey(KeyCode.S)) {
 			rigidbody2D.AddForce(-gameObject.transform.up * 0.7f * speed);
-		}
-		
-		if(Input.GetKey(KeyCode.D)) {
+			walk = true;
+			animCtrl.SetBool ("walk", true);
+		} else if(Input.GetKey(KeyCode.D)) {
 			rigidbody2D.AddForce(gameObject.transform.right * speed);
+			walk = true;
+			animCtrl.SetBool ("walk", true);
+		} else {
+			walk = false;
+			animCtrl.SetBool ("walk", false);
 		}
 	}
 }
