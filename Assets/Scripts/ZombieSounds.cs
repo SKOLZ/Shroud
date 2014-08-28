@@ -9,7 +9,6 @@ public class ZombieSounds : RandomSounds {
 	// Update is called once per frame
 	void Update () {
 		if(closeToPlayer())
-			print("bla");
 			playSound();
 	}
 

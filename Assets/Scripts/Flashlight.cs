@@ -35,7 +35,6 @@ public class Flashlight : MonoBehaviour {
 			if(!audio.isPlaying) {
 				audio.clip = flashlightSwitch;
 				audio.Play();
-				print(audio.isPlaying);
 			}
 			flashlight.enabled = !flashlight.enabled;
 		}

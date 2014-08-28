@@ -45,7 +45,6 @@ public class MainMenu : MonoBehaviour {
 	}
 
 	void Update() {
-		Debug.Log(audio.isPlaying);
 		if(jumpPlaying && !audio.isPlaying){
 			Application.LoadLevel(1);
 		}
